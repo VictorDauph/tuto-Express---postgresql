@@ -1,5 +1,5 @@
 # Utiliser une image de base
-FROM node:16
+FROM node:18
 
 # Définir le répertoire de travail
 WORKDIR /app
@@ -22,5 +22,5 @@ RUN npm install -g nodemon
 COPY . .
 
 # Utiliser un script shell pour conditionner le démarrage
-CMD ["sh", "-c", "if [ \"$NODE_ENV\" = \"development\" ]; then npm run dev; else npm start; fi"]
+CMD ["npm", "start"]
 
