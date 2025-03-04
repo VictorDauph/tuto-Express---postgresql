@@ -196,6 +196,12 @@ router.delete('/:id', deleteUser);
  *         schema:
  *           type: string
  *         description: Email de l'utilisateur (recherche partielle insensible à la casse).
+ *       - in: query
+ *         name: createdAfter
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Filtrer les utilisateurs créés après cette date (format YYYY-MM-DD).
  *     responses:
  *       200:
  *         description: Liste des utilisateurs correspondant aux critères

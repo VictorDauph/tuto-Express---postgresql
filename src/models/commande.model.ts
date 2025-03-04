@@ -4,7 +4,7 @@ import Client from "./client.model";
 import Produit from "./produit.model";
 
 interface CommandeAttributes {
-    id: number;
+    id?: number;
     clientId: number;
     produitId: number;
     quantite: number;
@@ -13,9 +13,7 @@ interface CommandeAttributes {
     isReturned?: boolean;
 }
 
-interface CommandeCreationAttributes extends Optional<CommandeAttributes, "id" | "dateCreation" | "status" | "isReturned"> { }
-
-class Commande extends Model<CommandeAttributes, CommandeCreationAttributes> implements CommandeAttributes {
+class Commande extends Model<CommandeAttributes> implements CommandeAttributes {
     public id!: number;
     public clientId!: number;
     public produitId!: number;
