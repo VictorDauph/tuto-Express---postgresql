@@ -2,16 +2,14 @@ import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/database";
 
 interface ProduitAttributes {
-    id: number;
+    id?: number;
     nom: string;
     prix: number;
     createdAt?: Date;
     updatedAt?: Date;
 }
 
-interface ProduitCreationAttributes extends Optional<ProduitAttributes, "id"> { }
-
-class Produit extends Model<ProduitAttributes, ProduitCreationAttributes> implements ProduitAttributes {
+class Produit extends Model<ProduitAttributes> implements ProduitAttributes {
     public id!: number;
     public nom!: string;
     public prix!: number;

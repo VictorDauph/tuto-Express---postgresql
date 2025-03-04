@@ -2,16 +2,14 @@ import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/database";
 
 interface ClientAttributes {
-    id: number;
+    id?: number;
     nom: string;
     prenom: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
 
-interface ClientCreationAttributes extends Optional<ClientAttributes, "id"> { }
-
-class Client extends Model<ClientAttributes, ClientCreationAttributes> implements ClientAttributes {
+class Client extends Model<ClientAttributes> implements ClientAttributes {
     public id!: number;
     public nom!: string;
     public prenom!: string;
