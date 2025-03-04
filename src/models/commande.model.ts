@@ -5,22 +5,22 @@ import Produit from "./produit.model";
 
 interface CommandeAttributes {
     id?: number;
-    clientId: number;
-    produitId: number;
+    client_id: number;
+    produit_id: number;
     quantite: number;
-    dateCreation?: Date;
     status?: boolean;
-    isReturned?: boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 class Commande extends Model<CommandeAttributes> implements CommandeAttributes {
     public id!: number;
-    public clientId!: number;
-    public produitId!: number;
+    public client_id!: number;
+    public produit_id!: number;
     public quantite!: number;
-    public readonly dateCreation!: Date;
     public status!: boolean;
-    public isReturned!: boolean;
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
 }
 
 Commande.init(
@@ -30,7 +30,7 @@ Commande.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        clientId: {
+        client_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -39,7 +39,7 @@ Commande.init(
             },
             onDelete: "CASCADE",
         },
-        produitId: {
+        produit_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -55,15 +55,7 @@ Commande.init(
                 min: 1,
             },
         },
-        dateCreation: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
-        },
         status: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
-        },
-        isReturned: {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         },
@@ -71,15 +63,15 @@ Commande.init(
     {
         sequelize,
         tableName: "commandes",
-        timestamps: false,
+        timestamps: true,
     }
 );
 
 // Associer les relations
-Client.hasMany(Commande, { foreignKey: "clientId" });
-Commande.belongsTo(Client, { foreignKey: "clientId" });
+Client.hasMany(Commande, { foreignKey: "client_id" });
+Commande.belongsTo(Client, { foreignKey: "client_id" });
 
-Produit.hasMany(Commande, { foreignKey: "produitId" });
-Commande.belongsTo(Produit, { foreignKey: "produitId" });
+Produit.hasMany(Commande, { foreignKey: "produit_id" });
+Commande.belongsTo(Produit, { foreignKey: "produit_id" });
 
 export default Commande;
