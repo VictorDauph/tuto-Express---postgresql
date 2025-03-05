@@ -3,17 +3,14 @@ import sequelize from "../config/database";
 
 // Définition des attributs d'un utilisateur
 interface UtilisateurAttributes {
-    id: number;
+    id?: number;
     nom: string;
     email: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
 
-// Permet d’avoir un champ optionnel à la création (id auto-incrémenté)
-interface UtilisateurCreationAttributes extends Optional<UtilisateurAttributes, "id"> { }
-
-class Utilisateur extends Model<UtilisateurAttributes, UtilisateurCreationAttributes>
+class Utilisateur extends Model<UtilisateurAttributes>
     implements UtilisateurAttributes {
     public id!: number;
     public nom!: string;

@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/database";
+import Commande from "./commande.model";
 
 interface ClientAttributes {
     id?: number;
@@ -39,5 +40,7 @@ Client.init(
         timestamps: true,
     }
 );
+
+Client.hasMany(Commande, { foreignKey: "client_id" });
 
 export default Client;

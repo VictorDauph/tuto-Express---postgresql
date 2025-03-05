@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/database";
+import Commande from "./commande.model";
 
 interface ProduitAttributes {
     id?: number;
@@ -43,4 +44,5 @@ Produit.init(
     }
 );
 
+Produit.hasMany(Commande, { foreignKey: "produit_id" });
 export default Produit;
