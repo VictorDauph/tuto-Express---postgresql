@@ -44,5 +44,5 @@ Produit.init(
     }
 );
 
-Produit.hasMany(Commande, { foreignKey: "produit_id" });
+
 export default Produit;

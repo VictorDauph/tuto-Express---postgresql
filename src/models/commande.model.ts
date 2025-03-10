@@ -70,6 +70,9 @@ Commande.init(
 // Associer les relations
 
 Commande.belongsTo(Client, { foreignKey: "client_id" });
+Client.hasMany(Commande, { foreignKey: "client_id" });
+
 Commande.belongsTo(Produit, { foreignKey: "produit_id" });
+Produit.hasMany(Commande, { foreignKey: "produit_id" });
 
 export default Commande;

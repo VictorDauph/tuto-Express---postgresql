@@ -41,6 +41,4 @@ Client.init(
     }
 );
 
-Client.hasMany(Commande, { foreignKey: "client_id" });
-
 export default Client;
